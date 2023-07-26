@@ -1,6 +1,8 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         /**
          * Es tracta de crear un generador de passwords. L'usuari ha d'indicar la mida del password i
@@ -16,7 +18,10 @@ public class Main {
         List<Integer> numeros = List.of(1,2,3,4,5,6,7,8,9);
         List<Character> characters = List.of('!','@','#','$','%','^','&','*','(',')','{','}','[',']','=','<','>');
 
-        int length = 10;
+        int length = 0;
+        System.out.print("Introduce la longitud: ");
+        length = scanner.nextInt();
+
         StringBuilder password = new StringBuilder();
 
         for(int i=0; i<length; i++){
