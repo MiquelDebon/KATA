@@ -12,44 +12,28 @@ public class Main {
      * Buena suerte!
      */
     static Scanner scanner = new Scanner(System.in);
+    static List<String> todo = List.of(
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+            "1","2","3","4","5","6","7","8","9",
+            "!","@","#","$","%","^","&","*","(",")","{","}","[","]","=","<",">"
+    );
 
     public static void main(String[] args) {
 
-        List<String> letras = List.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
-        List<Integer> numeros = List.of(1,2,3,4,5,6,7,8,9);
-        List<Character> characters = List.of('!','@','#','$','%','^','&','*','(',')','{','}','[',']','=','<','>');
-        int length;
-
         StringBuilder password = new StringBuilder();
         System.out.print("Introduce la longitud: ");
-        length = scanner.nextInt();
+        int length = scanner.nextInt();
 
         for(int i=0; i<length; i++){
-            switch (randomNumberOptions()){
-                case 1:
-                    password.append(letras.get(randomNumberRangeListSize(letras)));
-                    break;
-                case 2:
-                    password.append(letras.get(randomNumberRangeListSize(letras)).toUpperCase());
-                    break;
-                case 3:
-                    password.append(numeros.get(randomNumberRangeListSize(numeros)));
-                    break;
-                case 4:
-                    password.append(characters.get(randomNumberRangeListSize(characters)));
-                    break;
-            }
+            password.append(todo.get(randomNumberRangeListSize()));
         }
-        System.out.println(password);
+        System.out.println("Your password: " + password);
 
     }
 
-    static int randomNumberOptions(){
-        return (int)(Math.random()*4)+1;
-    }
-
-    static int randomNumberRangeListSize(List list){
-        int range = list.size()-1;
+    static int randomNumberRangeListSize(){
+        int range = todo.size()-1;
         return (int)(Math.random()*range)+1;
     }
 }
